@@ -3,3 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5437/date_tour
     username: postgres
     password: wrp@PGatSMGI0601
+
+
+logging:
+  level:
+    cn.wangruiping.tour.db: debug

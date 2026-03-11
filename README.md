@@ -9,3 +9,8 @@
 2. 景点打卡分享
 3. 用户旅游探讨
 4. 游玩推荐
+
+
+## 数据来源
+1. 国家天地图行政区划数据（省市县）：https://cloudcenter.tianditu.gov.cn/administrativeDivision/
+2. 全国5A景点（截止2023年）：https://gitcode.com/Universal-Tool/de21c
