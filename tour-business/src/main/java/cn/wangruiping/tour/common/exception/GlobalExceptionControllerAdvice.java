@@ -1,5 +1,6 @@
 package cn.wangruiping.tour.common.exception;
 
+import cn.dev33.satoken.exception.NotLoginException;
 import cn.wangruiping.tour.common.domain.Result;
 import cn.wangruiping.tour.common.util.ResultUtils;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
@@ -22,6 +22,11 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionControllerAdvice {
+
+    @ExceptionHandler(NotLoginException.class)
+    public Result<Void> handlerException(NotLoginException e) {
+        return ResultUtils.error(e.getMessage());
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result<Void> MethodArgumentNotValidException(MethodArgumentNotValidException e) {

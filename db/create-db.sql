@@ -62,7 +62,8 @@ CREATE TABLE IF NOT EXISTS public.user
 
 COMMENT ON TABLE public.user
     IS '用户表';
-
+CREATE UNIQUE INDEX idx_user_username ON public.user (username);
+CREATE UNIQUE INDEX idx_user_phone ON public.user (phone);
 
 CREATE TABLE IF NOT EXISTS public.user_spot_checkins
 (
@@ -79,6 +80,8 @@ CREATE TABLE IF NOT EXISTS public.user_spot_checkins
 
 COMMENT ON TABLE public.user_spot_checkins
     IS '用户景点打卡表';
+
+
 
 
 -- 景点攻略（以地图路线为主）

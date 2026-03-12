@@ -13,7 +13,7 @@ import java.nio.file.Path;
  **/
 @Data
 @Component
-@ConfigurationProperties(prefix = "ray-wing.system")
+@ConfigurationProperties(prefix = "tour-system")
 public class SystemProperties {
     private Path basePath;
 }

@@ -9,4 +9,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2026年03月11日 14:06
  **/
 public interface UserService extends IService<UserEntity> {
+
+    UserEntity getByUsername(String username);
 }
