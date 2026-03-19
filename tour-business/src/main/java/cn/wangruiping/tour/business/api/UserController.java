@@ -7,6 +7,7 @@ import cn.wangruiping.tour.business.param.UserRegisterParam;
 import cn.wangruiping.tour.business.param.UsernamePasswordLoginParam;
 import cn.wangruiping.tour.common.domain.Result;
 import cn.wangruiping.tour.common.util.ResultUtils;
+import cn.wangruiping.tour.wechat.WechatLoginInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,13 @@ public class UserController {
     @PostMapping("register")
     public Result<Void> register(@RequestBody @Validated UserRegisterParam param) {
         userBusiness.register(param);
+        return ResultUtils.success();
+    }
+
+    @Operation(summary = "微信登录")
+    @PostMapping("wechat/login")
+    public Result<Void> wechatLogin(@RequestBody @Validated WechatLoginInfo param) {
+        userBusiness.wechatLogin(param);
         return ResultUtils.success();
     }
 

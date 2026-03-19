@@ -7,6 +7,11 @@ spring:
 server:
   port: 18080
 
+# 微信小程序配置
+wechat:
+  appid: wxda94871badbb8767
+  secret: f2b9106189c83379734e0b38e16e4be5
+  url: https://api.weixin.qq.com/
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:

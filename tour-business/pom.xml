@@ -31,6 +31,7 @@
         <mybatis-plus.version>3.5.15</mybatis-plus.version>
         <knite4j.version>4.5.0</knite4j.version>
         <sa-token.version>1.45.0</sa-token.version>
+        <hutool.version>5.8.38</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +41,15 @@
                 <artifactId>mybatis-plus-bom</artifactId>
                 <version>${mybatis-plus.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <!-- 注意这里是import -->
                 <scope>import</scope>
             </dependency>
         </dependencies>
@@ -102,6 +112,16 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>${knite4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-json</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
         </dependency>
 
         <dependency>

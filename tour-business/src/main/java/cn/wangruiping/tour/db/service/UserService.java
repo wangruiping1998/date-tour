@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<UserEntity> {
 
     UserEntity getByUsername(String username);
+
+    UserEntity getByPhone(String phone);
 }

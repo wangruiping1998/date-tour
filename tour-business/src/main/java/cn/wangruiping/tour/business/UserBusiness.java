@@ -6,6 +6,9 @@ import cn.wangruiping.tour.business.param.UsernamePasswordLoginParam;
 import cn.wangruiping.tour.db.entity.UserEntity;
 import cn.wangruiping.tour.db.service.UserService;
 import cn.wangruiping.tour.user.UserException;
+import cn.wangruiping.tour.wechat.WechatLoginInfo;
+import cn.wangruiping.tour.wechat.WechatService;
+import cn.wangruiping.tour.wechat.WechatUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -20,11 +23,26 @@ import org.springframework.stereotype.Component;
 public class UserBusiness {
 
     private final UserService userService;
+    private final WechatService wechatService;
 
-    public void register(UserRegisterParam param) {
+    public UserEntity register(UserRegisterParam param) {
         UserEntity user = new UserEntity();
         BeanUtils.copyProperties(param, user);
         userService.save(user);
+        return user;
+    }
+
+    public void wechatLogin(WechatLoginInfo loginInfo) {
+        WechatUserInfo wechatUserInfo = wechatService.login(loginInfo);
+        UserEntity user = userService.getByPhone(wechatUserInfo.getPhone());
+        if(user == null) {
+            UserRegisterParam userRegisterParam = new UserRegisterParam();
+            userRegisterParam.setUsername(wechatUserInfo.getPhone());
+            userRegisterParam.setPhone(wechatUserInfo.getPhone());
+            user = register(userRegisterParam);
+        }
+
+        StpUtil.login(user.getId());
     }
 
     public void login(UsernamePasswordLoginParam param) {

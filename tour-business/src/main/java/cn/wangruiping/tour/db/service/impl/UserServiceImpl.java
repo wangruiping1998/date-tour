@@ -26,4 +26,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
         return getOne(new LambdaQueryWrapper<UserEntity>()
                 .eq(UserEntity::getUsername, username));
     }
+
+    @Override
+    public UserEntity getByPhone(String phone) {
+        if(!StringUtils.hasText(phone)) {
+            return null;
+        }
+
+        return getOne(new LambdaQueryWrapper<UserEntity>()
+                .eq(UserEntity::getPhone, phone));
+    }
 }
